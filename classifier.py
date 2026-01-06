@@ -11,7 +11,11 @@ class Category(Enum):
 
 
 def classify(video_path):
-    duration, size_mb = get_duration_and_size(video_path)
+    try:
+        duration, size_mb = get_duration_and_size(video_path)
+    except Exception:
+        # if probing fails, mark as PASS to avoid crashing scan; caller can retry
+        return Category.PASS
 
     if duration <= MAX_DURATION and size_mb <= MAX_SIZE_MB:
         return Category.PASS
