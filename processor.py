@@ -20,6 +20,7 @@ def compress(input_path, output_path):
     ]
     run(cmd)
 
+
 def trim(input_path, output_path):
     cmd = [
         "ffmpeg", "-y",
@@ -29,6 +30,7 @@ def trim(input_path, output_path):
         str(output_path)
     ]
     run(cmd)
+
 
 def trim_and_compress(input_path, output_path):
     cmd = [
